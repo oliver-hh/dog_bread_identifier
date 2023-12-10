@@ -24,19 +24,17 @@
 # Imports python modules
 from time import time, sleep
 
-# TODO OB 
-"""
+
 # Imports print functions that check the lab
-from print_functions_for_lab_checks import *
+# TODO OB from print_functions_for_lab_checks import *
 
 # Imports functions created for this program
-from get_input_args import get_input_args
-from get_pet_labels import get_pet_labels
-from classify_images import classify_images
-from adjust_results4_isadog import adjust_results4_isadog
-from calculates_results_stats import calculates_results_stats
-from print_results import print_results
-"""
+from get_input_args import get_input_args, check_command_line_arguments
+# TODO OB from get_pet_labels import get_pet_labels
+# TODO OB from classify_images import classify_images
+# TODO OB from adjust_results4_isadog import adjust_results4_isadog
+# TODO OB from calculates_results_stats import calculates_results_stats
+# TODO OB from print_results import print_results
 
 # Main program function defined below
 def main():
@@ -44,19 +42,18 @@ def main():
     # Measures total program runtime by collecting start time
     start_time = time()
     
-    sleep(75)
+    # sleep(5)
 
-    # TODO 1: Define get_input_args function within the file get_input_args.py
+    # Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arugments from user as input from
     # the user running the program from a terminal window. This function returns
     # the collection of these command line arguments from the function call as
     # the variable in_arg
-    # TODO OB in_arg = get_input_args()
+    in_arg = get_input_args()
 
     # Function that checks command line arguments using in_arg
-    # TODO OB check_command_line_arguments(in_arg)
+    check_command_line_arguments(in_arg)
 
-    
     # TODO 2: Define get_pet_labels function within the file get_pet_labels.py
     # Once the get_pet_labels function has been defined replace 'None'
     # in the function call with in_arg.dir  Once you have done the replacements
@@ -68,7 +65,6 @@ def main():
 
     # Function that checks Pet Images in the results Dictionary using results
     # TODO OB check_creating_pet_image_labels(results)
-
 
     # TODO 3: Define classify_images function within the file classiy_images.py
     # Once the classify_images function has been defined replace first 'None'
