@@ -49,6 +49,6 @@ def get_pet_labels(image_dir):
     for file_name in file_names:
         label_words = file_name.lower().split('_')
         pet_label = ' '.join(x for x in label_words if x.isalpha()).strip()
-        pet_labels[file_name] = pet_label
+        pet_labels[file_name] = [pet_label]
 
     return pet_labels
