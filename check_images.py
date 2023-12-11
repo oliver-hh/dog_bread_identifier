@@ -47,7 +47,12 @@ def check_command_line_arguments(args):
     print(args.dogfile)
 
 def check_creating_pet_image_labels(pet_labels):
-    
+    """Check that pet labels have been created correctly
+
+    Args:
+        pet_labels (): pet labels to check
+    """
+    print(f'Number of labels: {len(pet_labels)}, first 10 labels:')
     for i, (key, value) in enumerate(pet_labels.items()):
         if i == 10:
             break
