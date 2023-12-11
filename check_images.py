@@ -30,11 +30,17 @@ from time import time, sleep
 
 # Imports functions created for this program
 from get_input_args import get_input_args, check_command_line_arguments
-# TODO OB from get_pet_labels import get_pet_labels
+from get_pet_labels import get_pet_labels
 # TODO OB from classify_images import classify_images
 # TODO OB from adjust_results4_isadog import adjust_results4_isadog
 # TODO OB from calculates_results_stats import calculates_results_stats
 # TODO OB from print_results import print_results
+
+def check_creating_pet_image_labels(pet_labels):
+    for i, (key, value) in enumerate(pet_labels.items()):
+        if i == 10:
+            break
+        print(f"{i+1:2d} file: {key:>30}   label: {value:>30}")
 
 # Main program function defined below
 def main():
@@ -54,17 +60,17 @@ def main():
     # Function that checks command line arguments using in_arg
     check_command_line_arguments(in_arg)
 
-    # TODO 2: Define get_pet_labels function within the file get_pet_labels.py
+    # Define get_pet_labels function within the file get_pet_labels.py
     # Once the get_pet_labels function has been defined replace 'None'
     # in the function call with in_arg.dir  Once you have done the replacements
     # your function call should look like this:
     #             get_pet_labels(in_arg.dir)
     # This function creates the results dictionary that contains the results,
     # this dictionary is returned from the function call as the variable results
-    # TODO OB results = get_pet_labels(None)
+    results = get_pet_labels(in_arg.dir)
 
     # Function that checks Pet Images in the results Dictionary using results
-    # TODO OB check_creating_pet_image_labels(results)
+    check_creating_pet_image_labels(results)
 
     # TODO 3: Define classify_images function within the file classiy_images.py
     # Once the classify_images function has been defined replace first 'None'
