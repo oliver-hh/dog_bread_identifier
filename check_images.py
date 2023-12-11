@@ -56,7 +56,7 @@ def check_creating_pet_image_labels(pet_labels):
     for i, (key, value) in enumerate(pet_labels.items()):
         if i == 10:
             break
-        print(f"{i+1:2d} file: {key:>30}   label: {','.join(value):>30}")
+        print(f"{i+1:2d} file: {key:>40}   label: {','.join(value):<30}")
 
 # Main program function defined below
 def main():
