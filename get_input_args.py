@@ -52,13 +52,3 @@ def get_input_args():
     # Replace None with parser.parse_args() parsed argument collection that
     # you created with this function
     return parser.parse_args()
-
-def check_command_line_arguments(args):
-    """Check that the command line arguments are valid
-
-    Args:
-        args: Arguments provided from the command line
-    """
-    print(args.dir)
-    print(args.arch)
-    print(args.dogfile)

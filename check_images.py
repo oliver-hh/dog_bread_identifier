@@ -29,14 +29,25 @@ from time import time, sleep
 # TODO OB from print_functions_for_lab_checks import *
 
 # Imports functions created for this program
-from get_input_args import get_input_args, check_command_line_arguments
+from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 # TODO OB from classify_images import classify_images
 # TODO OB from adjust_results4_isadog import adjust_results4_isadog
 # TODO OB from calculates_results_stats import calculates_results_stats
 # TODO OB from print_results import print_results
 
+def check_command_line_arguments(args):
+    """Check that the command line arguments are valid
+
+    Args:
+        args: Arguments provided from the command line
+    """
+    print(args.dir)
+    print(args.arch)
+    print(args.dogfile)
+
 def check_creating_pet_image_labels(pet_labels):
+    
     for i, (key, value) in enumerate(pet_labels.items()):
         if i == 10:
             break
