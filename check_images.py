@@ -64,7 +64,8 @@ def check_classifying_images(results):
     Args:
         results: classifiers to check
     """
-    None
+    for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
+        print(f'{key:<40} {value[0]:<30} {value[1]:<75}  {value[2]}')
 
 # Main program function defined below
 def main():

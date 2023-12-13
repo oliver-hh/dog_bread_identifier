@@ -96,6 +96,6 @@ def classify_images(images_dir, results_dic, model):
         label_match = int(pet_label in classifier_labels)
         value.append(label_match)
 
-        print(f'{key}: {image_classification}')
+        #DBG print(f'{key}: {image_classification}')
 
-    print(results_dic)
+    #DBG print(results_dic)
