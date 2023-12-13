@@ -31,7 +31,7 @@ from time import time, sleep
 # Imports functions created for this program
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
-# TODO OB from classify_images import classify_images
+from classify_images import classify_images
 # TODO OB from adjust_results4_isadog import adjust_results4_isadog
 # TODO OB from calculates_results_stats import calculates_results_stats
 # TODO OB from print_results import print_results
@@ -57,6 +57,14 @@ def check_creating_pet_image_labels(pet_labels):
         if i == 10:
             break
         print(f"{i+1:2d} file: {key:>40}   label: {','.join(value):<30}")
+
+def check_classifying_images(results):
+    """Check classifying images
+
+    Args:
+        results: classifiers to check
+    """
+    None
 
 # Main program function defined below
 def main():
@@ -88,7 +96,7 @@ def main():
     # Function that checks Pet Images in the results Dictionary using results
     check_creating_pet_image_labels(results)
 
-    # TODO 3: Define classify_images function within the file classiy_images.py
+    # Define classify_images function within the file classiy_images.py
     # Once the classify_images function has been defined replace first 'None'
     # in the function call with in_arg.dir and replace the last 'None' in the
     # function call with in_arg.arch  Once you have done the replacements your
@@ -96,10 +104,10 @@ def main():
     #             classify_images(in_arg.dir, results, in_arg.arch)
     # Creates Classifier Labels with classifier function, Compares Labels,
     # and adds these results to the results dictionary - results
-    # TODO OB classify_images(None, results, None)
+    classify_images(in_arg.dir, results, in_arg.arch)
 
     # Function that checks Results Dictionary using results
-    # TODO OB check_classifying_images(results)
+    check_classifying_images(results)
 
     # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
     # Once the adjust_results4_isadog function has been defined replace 'None'
