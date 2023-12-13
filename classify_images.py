@@ -92,7 +92,8 @@ def classify_images(images_dir, results_dic, model):
 
         image_classification = classifier(f'{images_dir}/{file_name}', model)
 
-        classifier_labels = [x.strip() for x in image_classification.lower().split(',')]
+        # classifier_labels = [x.strip() for x in image_classification.lower().split(',')]
+        classifier_labels = image_classification.lower().strip()
         value.append(classifier_labels)
 
         label_match = int(pet_label in classifier_labels)
