@@ -32,7 +32,7 @@ from time import time, sleep
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 from classify_images import classify_images
-# TODO OB from adjust_results4_isadog import adjust_results4_isadog
+from adjust_results4_isadog import adjust_results4_isadog
 # TODO OB from calculates_results_stats import calculates_results_stats
 # TODO OB from print_results import print_results
 
@@ -65,7 +65,16 @@ def check_classifying_images(results):
         results: classifiers to check
     """
     for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
-        print(f'{key:<40} {value[0]:<30} {value[1]:<75}  {value[2]}')
+        print(f'{key:<38} {value[0]:<28} {value[1]:<65}  {value[2]}')
+
+def check_classifying_labels_as_dogs(results):
+    """Check classifying images
+
+    Args:
+        results: classifiers to check
+    """
+    for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
+        print(f'{key:<38} {value[0]:<28} {value[1]:<65}  {value[2]}{value[3]}{value[4]}')
 
 # Main program function defined below
 def main():
@@ -110,7 +119,7 @@ def main():
     # Function that checks Results Dictionary using results
     check_classifying_images(results)
 
-    # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
+    # Define adjust_results4_isadog function within the file adjust_results4_isadog.py
     # Once the adjust_results4_isadog function has been defined replace 'None'
     # in the function call with in_arg.dogfile  Once you have done the
     # replacements your function call should look like this:
@@ -118,10 +127,10 @@ def main():
     # Adjusts the results dictionary to determine if classifier correctly
     # classified images as 'a dog' or 'not a dog'. This demonstrates if
     # model can correctly classify dog images as dogs (regardless of breed)
-    # TODO OB adjust_results4_isadog(results, None)
+    adjust_results4_isadog(results, in_arg.dogfile)
 
     # Function that checks Results Dictionary for is-a-dog adjustment using results
-    # TODO OB check_classifying_labels_as_dogs(results)
+    check_classifying_labels_as_dogs(results)
 
     # TODO 5: Define calculates_results_stats function within the file calculates_results_stats.py
     # This function creates the results statistics dictionary that contains a
