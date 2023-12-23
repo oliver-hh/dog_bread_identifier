@@ -38,8 +38,8 @@
 #            pct_correct_notdogs - percentage of correctly classified NON-dogs
 #
 ##
-# TODO 5: Define calculates_results_stats function below, please be certain to replace None
-#       in the return statement with the results_stats_dic dictionary that you create 
+#       Define calculates_results_stats function below, please be certain to replace None
+#       in the return statement with the results_stats_dic dictionary that you create
 #       with this function
 # 
 def calculates_results_stats(results_dic):
@@ -70,4 +70,27 @@ def calculates_results_stats(results_dic):
     """        
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
-    return None
+
+    n_images = len(results_dic)
+    n_correct_dogs = sum(1 for x in results_dic.values() if x[3] == 1 and x[4] == 1)
+    n_dog_images = sum(1 for x in results_dic.values() if x[3] == 1)
+    n_correct_notdogs = sum(1 for x in results_dic.values() if x[3] == 0 and x[4] == 0)
+    n_notdogs_images = sum(1 for x in results_dic.values() if x[3] == 0)
+    n_correct_breed = sum(1 for x in results_dic.values() if x[2] == 1 and x[3] == 1)
+    n_label_matches = sum(1 for x in results_dic.values() if x[2] == 1)
+
+    results_stats_dic = {
+        'n_images': n_images, 
+        'n_correct_dogs': n_correct_dogs, 
+        'n_dog_images': n_dog_images, 
+        'n_correct_notdogs': n_correct_notdogs, 
+        'n_notdogs_images': n_notdogs_images, 
+        'n_correct_breed': n_correct_breed, 
+        'n_label_matches': n_label_matches,
+        'pct_correct_dogs': round(n_correct_dogs/n_dog_images * 100, 2) if n_dog_images > 0 else 0,
+        'pct_correct_notdogs': round(n_correct_notdogs/n_notdogs_images * 100, 2) if n_notdogs_images > 0 else 0,
+        'pct_correct_breed': round(n_correct_breed/n_dog_images * 100, 2) if n_dog_images > 0 else 0,
+        'pct_label_matches': round(n_label_matches/n_images * 100, 2) if n_label_matches > 0 else 0
+    }
+
+    return results_stats_dic

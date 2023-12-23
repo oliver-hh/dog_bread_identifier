@@ -33,8 +33,8 @@ from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 from classify_images import classify_images
 from adjust_results4_isadog import adjust_results4_isadog
-# TODO OB from calculates_results_stats import calculates_results_stats
-# TODO OB from print_results import print_results
+from calculates_results_stats import calculates_results_stats
+from print_results import print_results
 
 def check_command_line_arguments(args):
     """Check that the command line arguments are valid
@@ -75,6 +75,37 @@ def check_classifying_labels_as_dogs(results):
     """
     for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
         print(f'{key:<38} {value[0]:<28} {value[1]:<65}  {value[2]}{value[3]}{value[4]}')
+
+def check_calculating_results(results, results_stats):
+    """Check statistics
+
+    Args:
+        results : classification result
+        results_stats: statistics 
+    """
+    n_images = len(results)
+    n_correct_dogs = sum(1 for x in results.values() if x[3] == 1 and x[4] == 1)
+    n_dog_images = sum(1 for x in results.values() if x[3] == 1)
+    n_correct_notdogs = sum(1 for x in results.values() if x[3] == 0 and x[4] == 0)
+    n_notdogs_images = sum(1 for x in results.values() if x[3] == 0)
+    n_correct_breed = sum(1 for x in results.values() if x[2] == 1 and x[3] == 1)
+    pct_correct_dogs = round(n_correct_dogs/n_dog_images * 100, 2) if n_dog_images > 0 else 0
+    pct_correct_notdogs = round(n_correct_notdogs/n_notdogs_images * 100, 2) if n_notdogs_images > 0 else 0
+    pct_correct_breed = round(n_correct_breed/n_dog_images * 100, 2) if n_dog_images > 0 else 0
+
+    print('Statistik check      : expected/acutal value')
+    print('--------------------------------------------')
+    print(f'n_images            : {n_images}/{results_stats["n_images"]}')
+    print(f'n_dog_images        : {n_dog_images}/{results_stats["n_dog_images"]}')
+    print(f'n_notdogs_images    : {n_notdogs_images}/{results_stats["n_notdogs_images"]}')
+    print(f'pct_correct_dogs    : {pct_correct_dogs}/{results_stats["pct_correct_dogs"]}')
+    print(f'pct_correct_notdogs : {pct_correct_notdogs}/{results_stats["pct_correct_notdogs"]}')
+    print(f'pct_correct_breed   : {pct_correct_breed}/{results_stats["pct_correct_breed"]}')
+
+    # print('| Key                  | Value |')
+    # print('| -------------------- | ----- |')
+    # for key, value in results_stats.items():
+    #     print(f'| {key:<20} | {value:>5} |')
 
 # Main program function defined below
 def main():
@@ -132,25 +163,25 @@ def main():
     # Function that checks Results Dictionary for is-a-dog adjustment using results
     check_classifying_labels_as_dogs(results)
 
-    # TODO 5: Define calculates_results_stats function within the file calculates_results_stats.py
+    # Define calculates_results_stats function within the file calculates_results_stats.py
     # This function creates the results statistics dictionary that contains a
     # summary of the results statistics (this includes counts & percentages). This
     # dictionary is returned from the function call as the variable results_stats
     # Calculates results of run and puts statistics in the Results Statistics
     # Dictionary - called results_stats
-    # TODO OB results_stats = calculates_results_stats(results)
+    results_stats = calculates_results_stats(results)
 
     # Function that checks Results Statistics Dictionary using results_stats
-    # TODO OB check_calculating_results(results, results_stats)
+    check_calculating_results(results, results_stats)
 
-    # TODO 6: Define print_results function within the file print_results.py
+    # Define print_results function within the file print_results.py
     # Once the print_results function has been defined replace 'None'
     # in the function call with in_arg.arch  Once you have done the
     # replacements your function call should look like this:
     #      print_results(results, results_stats, in_arg.arch, True, True)
     # Prints summary results, incorrect classifications of dogs (if requested)
     # and incorrectly classified breeds (if requested)
-    # TODO OB print_results(results, results_stats, None, True, True)
+    print_results(results, results_stats, None, True, True)
     
     # Measure total program runtime by collecting end time
     end_time = time()
