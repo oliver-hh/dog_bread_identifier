@@ -22,8 +22,7 @@
 ##
 
 # Imports python modules
-from time import time, sleep
-
+from time import time
 
 # Imports print functions that check the lab
 # TODO OB from print_functions_for_lab_checks import *

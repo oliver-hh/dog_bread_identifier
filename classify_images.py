@@ -89,13 +89,8 @@ def classify_images(images_dir, results_dic, model):
 
         image_classification = classifier(f'{images_dir}/{key}', model)
 
-        # classifier_labels = [x.strip() for x in image_classification.lower().split(',')]
         classifier_labels = image_classification.lower().strip()
         value.append(classifier_labels)
 
         label_match = int(pet_label in classifier_labels)
         value.append(label_match)
-
-        #DBG print(f'{key}: {image_classification}')
-
-    #DBG print(results_dic)

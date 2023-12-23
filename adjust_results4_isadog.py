@@ -72,10 +72,8 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """
-    with open(dogfile, 'r') as file:  
-        #dog_names = sorted(list(set([x.strip() for x in file.read().replace('\n', ',').split(',') if x != ''])))
+    with open(dogfile, 'r', encoding='utf-8') as file:  
         dog_names = sorted(set([x.strip() for x in file.read().split('\n') if x != '']))
-        #DBG print(dog_names)
 
     for _, value in results_dic.items():
         pet_label = value[0]
@@ -85,5 +83,4 @@ def adjust_results4_isadog(results_dic, dogfile):
         classifier_label = value[1]
         is_classifier_label_a_dog = int(classifier_label in dog_names)
         value.append(is_classifier_label_a_dog)
-        
-    print(results_dic)
+    
