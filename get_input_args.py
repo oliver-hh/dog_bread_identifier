@@ -18,7 +18,7 @@
 import argparse
 
 # Define get_input_args function below please be certain to replace None
-# in the return statement with parser.parse_args() parsed argument 
+# in the return statement with parser.parse_args() parsed argument
 # collection that you created with this function
 def get_input_args():
     """
@@ -48,6 +48,13 @@ def get_input_args():
                         help = 'CNN architecture: resnet, alexnet, or vgg')
     parser.add_argument('--dogfile', type = str, default = 'dognames.txt',
                         help = 'path to the folder of pet images')
+
+    parser.add_argument("--show-args", action="store_true", default=False)
+    parser.add_argument("--show-pet-labels", action="store_true", default=False)
+    parser.add_argument("--show-image-classification", action="store_true", default=False)
+    parser.add_argument("--show-is-a-dog", action="store_true", default=False)
+    parser.add_argument("--show-statistics", action="store_true", default=False)
+    parser.add_argument("--print-result", action="store_true", default=True)
 
     # Replace None with parser.parse_args() parsed argument collection that
     # you created with this function
