@@ -41,9 +41,11 @@ def check_command_line_arguments(args):
     Args:
         args: Arguments provided from the command line
     """
-    print(args.dir)
-    print(args.arch)
-    print(args.dogfile)
+    print('Command line arguments')
+    print('----------------------')
+    for arg in vars(args):
+        print(f'{arg:<25}: {getattr(args, arg)}')
+    print()
 
 def check_creating_pet_image_labels(pet_labels):
     """Check that pet labels have been created correctly
@@ -51,11 +53,14 @@ def check_creating_pet_image_labels(pet_labels):
     Args:
         pet_labels (): pet labels to check
     """
+    print('Show pet labels')
+    print('---------------')
     print(f'Number of labels: {len(pet_labels)}, first 10 labels:')
     for i, (key, value) in enumerate(pet_labels.items()):
         if i == 10:
             break
-        print(f"{i+1:2d} file: {key:>40}   label: {','.join(value):<30}")
+        print(f"{i+1:2d} file: {key:<40}   label: {','.join(value):<30}")
+    print()
 
 def check_classifying_images(results):
     """Check classifying images
@@ -63,8 +68,11 @@ def check_classifying_images(results):
     Args:
         results: classifiers to check
     """
+    print('Show image classification')
+    print('-------------------------')
     for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
         print(f'{key:<38} {value[0]:<28} {value[1]:<65}  {value[2]}')
+    print()
 
 def check_classifying_labels_as_dogs(results):
     """Check classifying images
@@ -72,8 +80,17 @@ def check_classifying_labels_as_dogs(results):
     Args:
         results: classifiers to check
     """
+    print('Show is-a-dog classification')
+    print('----------------------------')
     for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
         print(f'{key:<38} {value[0]:<28} {value[1]:<65}  {value[2]}{value[3]}{value[4]}')
+
+    # CSV for Excel
+    # print(f'File|Pet label|Classification label|Is match|Pet label is dog|Classifier label is dog')
+    # for key, value in sorted(results.items(), key=lambda item: item[0].lower()):
+    #     print(f'{key}|{value[0]}|{value[1]}|{value[2]}|{value[3]}|{value[4]}')
+
+    print()
 
 def check_calculating_results(results, results_stats):
     """Check statistics
@@ -92,14 +109,15 @@ def check_calculating_results(results, results_stats):
     pct_correct_notdogs = round(n_correct_notdogs/n_notdogs_images * 100, 2) if n_notdogs_images > 0 else 0
     pct_correct_breed = round(n_correct_breed/n_dog_images * 100, 2) if n_dog_images > 0 else 0
 
-    print('Statistik check      : expected/acutal value')
-    print('--------------------------------------------')
+    print('Show statistics with expected/actual value')
+    print('------------------------------------------')
     print(f'n_images            : {n_images}/{results_stats["n_images"]}')
     print(f'n_dog_images        : {n_dog_images}/{results_stats["n_dog_images"]}')
     print(f'n_notdogs_images    : {n_notdogs_images}/{results_stats["n_notdogs_images"]}')
     print(f'pct_correct_dogs    : {pct_correct_dogs}/{results_stats["pct_correct_dogs"]}')
     print(f'pct_correct_notdogs : {pct_correct_notdogs}/{results_stats["pct_correct_notdogs"]}')
     print(f'pct_correct_breed   : {pct_correct_breed}/{results_stats["pct_correct_breed"]}')
+    print()
 
     # print('| Key                  | Value |')
     # print('| -------------------- | ----- |')
@@ -111,8 +129,6 @@ def main():
 
     # Measures total program runtime by collecting start time
     start_time = time()
-    
-    # sleep(5)
 
     # Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arugments from user as input from
@@ -186,7 +202,7 @@ def main():
     # Prints summary results, incorrect classifications of dogs (if requested)
     # and incorrectly classified breeds (if requested)
     if in_arg.print_result:
-        print_results(results, results_stats, None, True, True)
+        print_results(results, results_stats, in_arg.arch, True, True)
 
     # Measure total program runtime by collecting end time
     end_time = time()

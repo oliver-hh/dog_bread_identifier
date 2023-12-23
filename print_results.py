@@ -69,6 +69,9 @@ def print_results(results_dic, results_stats_dic, model,
     n_correct_notdogs = results_stats_dic['n_correct_notdogs']
     n_correct_breed = results_stats_dic['n_correct_breed']
 
+    print('Print results')
+    print('-------------')
+    
     print(f'Parameters: model={model}, incorrect_dogs={print_incorrect_dogs}, incorrect_breed={print_incorrect_breed}')
     print('| Key                  | Value |')
     print('| -------------------- | ----- |')
@@ -93,3 +96,5 @@ def print_results(results_dic, results_stats_dic, model,
             for key, value in results_dic.items():
                 if sum(value[3:]) == 2 and value[2] == 0:
                     print(f'{key}: {value[0], value[1]}')
+
+    print()

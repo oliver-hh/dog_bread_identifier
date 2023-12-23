@@ -49,7 +49,7 @@ def get_input_args():
     parser.add_argument('--dogfile', type = str, default = 'dognames.txt',
                         help = 'path to the folder of pet images')
 
-    parser.add_argument("--show-args", action="store_true", default=False)
+    parser.add_argument("--show-args", action="store_true", default=True)
     parser.add_argument("--show-pet-labels", action="store_true", default=False)
     parser.add_argument("--show-image-classification", action="store_true", default=False)
     parser.add_argument("--show-is-a-dog", action="store_true", default=False)
