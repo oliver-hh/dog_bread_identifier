@@ -81,20 +81,26 @@ def print_results(results_dic, results_stats_dic, model,
     for key, value in results_stats_dic.items():
         if key.startswith('pct_'):
             print(f'| {key:<20} | {value:>5} |')
-
+    print()
 
     if print_incorrect_dogs:
-        print('Misclassified Dogs')
+        print('Misclassified Dogs (Pet label / classified as)')
         if n_correct_dogs + n_correct_notdogs != n_images:
             for key, value in results_dic.items():
                 if sum(value[3:]) == 1:
-                    print(f'{key}: {value[0], value[1]}')
+                    print(f'{key:<30}: {value[0]:<25} / {value[1]:<35}')
+        else:
+            print('-- none --')
+        print()
 
     if print_incorrect_breed:
-        print('Misclassified Breed\'s of Dog')
+        print('Misclassified Breed\'s of Dogs (Pet label / classified as)')
         if n_correct_dogs != n_correct_breed:
             for key, value in results_dic.items():
                 if sum(value[3:]) == 2 and value[2] == 0:
-                    print(f'{key}: {value[0], value[1]}')
+                    print(f'{key:<30}: {value[0]:<25} / {value[1]:<35}')
+        else:
+            print('-- none --')
+        print()
 
     print()

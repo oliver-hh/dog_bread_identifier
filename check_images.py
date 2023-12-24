@@ -75,7 +75,7 @@ def check_classifying_images(results):
     print()
 
 def check_classifying_labels_as_dogs(results):
-    """Check classifying images
+    """Check is-a-dog classification
 
     Args:
         results: classifiers to check
