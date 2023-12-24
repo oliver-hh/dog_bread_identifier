@@ -71,12 +71,15 @@ def calculates_results_stats(results_dic):
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
 
+    # Number of images in total (all, dogs, notdogs)
     n_images = len(results_dic)
-    n_correct_dogs = sum(1 for x in results_dic.values() if x[3] == 1 and x[4] == 1)
     n_dog_images = sum(1 for x in results_dic.values() if x[3] == 1)
-    n_correct_notdogs = sum(1 for x in results_dic.values() if x[3] == 0 and x[4] == 0)
-    n_notdogs_images = sum(1 for x in results_dic.values() if x[3] == 0)
+    n_notdogs_images = n_images - n_dog_images
+    
+    # Matches (dogs, notdogs, breed, label)
+    n_correct_dogs = sum(1 for x in results_dic.values() if x[3] == 1 and x[4] == 1)
     n_correct_breed = sum(1 for x in results_dic.values() if x[2] == 1 and x[3] == 1)
+    n_correct_notdogs = sum(1 for x in results_dic.values() if x[3] == 0 and x[4] == 0)
     n_label_matches = sum(1 for x in results_dic.values() if x[2] == 1)
 
     results_stats_dic = {
