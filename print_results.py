@@ -63,8 +63,8 @@ def print_results(results_dic, results_stats_dic, model,
            None - simply printing results.
     """    
     n_images = results_stats_dic['n_images']
-    n_dog_images = results_stats_dic['n_dog_images']
-    n_notdogs_images = results_stats_dic['n_notdogs_images']
+    n_dogs_img = results_stats_dic['n_dogs_img']
+    n_notdogs_img = results_stats_dic['n_notdogs_img']
     n_correct_dogs = results_stats_dic['n_correct_dogs']
     n_correct_notdogs = results_stats_dic['n_correct_notdogs']
     n_correct_breed = results_stats_dic['n_correct_breed']
@@ -76,8 +76,8 @@ def print_results(results_dic, results_stats_dic, model,
     print('| Key                  | Value |')
     print('| -------------------- | ----- |')
     print(f'| n_images             | {n_images:>5} |')
-    print(f'| n_dog_images         | {n_dog_images:>5} |')
-    print(f'| n_notdogs_images     | {n_notdogs_images:>5} |')
+    print(f'| n_dogs_img           | {n_dogs_img:>5} |')
+    print(f'| n_notdogs_img        | {n_notdogs_img:>5} |')
     for key, value in results_stats_dic.items():
         if key.startswith('pct_'):
             print(f'| {key:<20} | {value:>5} |')

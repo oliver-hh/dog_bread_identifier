@@ -73,8 +73,8 @@ def calculates_results_stats(results_dic):
 
     # Number of images in total (all, dogs, notdogs)
     n_images = len(results_dic)
-    n_dog_images = sum(1 for x in results_dic.values() if x[3] == 1)
-    n_notdogs_images = n_images - n_dog_images
+    n_dogs_img = sum(1 for x in results_dic.values() if x[3] == 1)
+    n_notdogs_img = n_images - n_dogs_img
     
     # Matches (dogs, notdogs, breed, label)
     n_correct_dogs = sum(1 for x in results_dic.values() if x[3] == 1 and x[4] == 1)
@@ -85,14 +85,14 @@ def calculates_results_stats(results_dic):
     results_stats_dic = {
         'n_images': n_images, 
         'n_correct_dogs': n_correct_dogs, 
-        'n_dog_images': n_dog_images, 
+        'n_dogs_img': n_dogs_img, 
         'n_correct_notdogs': n_correct_notdogs, 
-        'n_notdogs_images': n_notdogs_images, 
+        'n_notdogs_img': n_notdogs_img, 
         'n_correct_breed': n_correct_breed, 
         'n_label_matches': n_label_matches,
-        'pct_correct_dogs': round(n_correct_dogs/n_dog_images * 100, 2) if n_dog_images > 0 else 0,
-        'pct_correct_notdogs': round(n_correct_notdogs/n_notdogs_images * 100, 2) if n_notdogs_images > 0 else 0,
-        'pct_correct_breed': round(n_correct_breed/n_dog_images * 100, 2) if n_dog_images > 0 else 0,
+        'pct_correct_dogs': round(n_correct_dogs/n_dogs_img * 100, 2) if n_dogs_img > 0 else 0,
+        'pct_correct_notdogs': round(n_correct_notdogs/n_notdogs_img * 100, 2) if n_notdogs_img > 0 else 0,
+        'pct_correct_breed': round(n_correct_breed/n_dogs_img * 100, 2) if n_dogs_img > 0 else 0,
         'pct_label_matches': round(n_label_matches/n_images * 100, 2) if n_label_matches > 0 else 0
     }
 
