@@ -58,10 +58,28 @@ Overview of all command line arguments including the before mentioned
 | --show-is-a-dog             | show whether images are dogs                       | False        |
 | --show-statistics           | show statistics                                    | False        |
 
-## Batch prpcessing
+## Results
+The script ```run_models_batch``` provided the correct results and the respective
+output files have been saved to folder ```./results/```.
 
-```bash
-python check_images.py --dir pet_images/ --arch resnet  --dogfile dognames.txt > resnet_pet-images.txt
-python check_images.py --dir pet_images/ --arch alexnet --dogfile dognames.txt > alexnet_pet-images.txt
-python check_images.py --dir pet_images/ --arch vgg     --dogfile dognames.txt > vgg_pet-images.txt
-```
+- ```alexnet_pet-images.txt```
+- ```resnet_pet-images.txt```
+- ```vgg_pet-images.txt```
+
+All model archtectures were able to distinguish between dog and not-a-dog images in general:
+
+| **Measurement**        | Count |
+| ---------------------- | ----- |
+| **# Total Images**     | 40    |
+| **# Dog Images**       | 30    |
+| **# Not-a-Dog Images** | 10    |
+
+Differences occured in classificatication as shown in the table:
+
+| **CNN Model Architecture** | **Time [s]** | **% Not-a-Dog Correct** | **% Dog Correct** | **% Breeds Correct** | **% Match Labels** |
+| -------------------------- | -----------: | ----------------------: | ----------------: | -------------------: | -----------------: |
+| **AlexNet**                |            1 |                   100.0 |             100.0 |                 80.0 |               75.0 |
+| **ResNet**                 |            3 |                    90.0 |             100.0 |                 90.0 |               82.5 |
+| **VGG**                    |           16 |                   100.0 |             100.0 |                 93.3 |               87.5 |
+
+VGG is the most accurate architecture but the runtime is about a factor of 5 (ResNet) or 16 (AlexNet) slower on my machine.

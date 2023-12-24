@@ -1,0 +1,23 @@
+Print results
+-------------
+Parameters: model=vgg, incorrect_dogs=True, incorrect_breed=True
+| Key                  | Value |
+| -------------------- | ----- |
+| n_images             |    40 |
+| n_dogs_img           |    30 |
+| n_notdogs_img        |    10 |
+| pct_correct_dogs     | 100.0 |
+| pct_correct_notdogs  | 100.0 |
+| pct_correct_breed    | 93.33 |
+| pct_label_matches    |  87.5 |
+
+Misclassified Dogs (Pet label / classified as)
+-- none --
+
+Misclassified Breed's of Dogs (Pet label / classified as)
+Beagle_01170.jpg              : beagle                    / walker hound, walker foxhound      
+Great_pyrenees_05367.jpg      : great pyrenees            / kuvasz                             
+
+
+
+** Total Elapsed Runtime: 0:0:16

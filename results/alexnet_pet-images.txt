@@ -1,0 +1,27 @@
+Print results
+-------------
+Parameters: model=alexnet, incorrect_dogs=True, incorrect_breed=True
+| Key                  | Value |
+| -------------------- | ----- |
+| n_images             |    40 |
+| n_dogs_img           |    30 |
+| n_notdogs_img        |    10 |
+| pct_correct_dogs     | 100.0 |
+| pct_correct_notdogs  | 100.0 |
+| pct_correct_breed    |  80.0 |
+| pct_label_matches    |  75.0 |
+
+Misclassified Dogs (Pet label / classified as)
+-- none --
+
+Misclassified Breed's of Dogs (Pet label / classified as)
+Beagle_01170.jpg              : beagle                    / walker hound, walker foxhound      
+Boston_terrier_02285.jpg      : boston terrier            / basenji                            
+Beagle_01141.jpg              : beagle                    / english foxhound                   
+Golden_retriever_05182.jpg    : golden retriever          / tibetan mastiff                    
+Great_pyrenees_05367.jpg      : great pyrenees            / kuvasz                             
+Golden_retriever_05257.jpg    : golden retriever          / afghan hound, afghan               
+
+
+
+** Total Elapsed Runtime: 0:0:1
