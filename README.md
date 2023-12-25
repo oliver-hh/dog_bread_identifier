@@ -60,13 +60,13 @@ Overview of all command line arguments including the before mentioned
 
 ## Results
 The script ```run_models_batch``` provided the correct results and the respective
-output files have been saved to folder ```./results/```.
+output files (only final results) have been saved to folder ```./results/```.
 
 - ```alexnet_pet-images.txt```
 - ```resnet_pet-images.txt```
 - ```vgg_pet-images.txt```
 
-All model archtectures were able to distinguish between dog and not-a-dog images in general:
+All model architectures were able to distinguish between dog and not-a-dog images in general:
 
 | **Measurement**        | Count |
 | ---------------------- | ----- |
