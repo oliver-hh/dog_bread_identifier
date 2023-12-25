@@ -52,11 +52,11 @@ Overview of all command line arguments including the before mentioned
 | --dir                       | path to the folder of pet images                   | pet_images/  |
 | --arch                      | CNN architecture: resnet, alexnet, or vgg          | vgg          |
 | --dogfile                   | path to the folder of pet images                   | dognames.txt |
-| --show-args                 | show command line arguments                        | False        |
-| --show-pet-labels           | show pet labels from file names                    | False        |
-| --show-image-classification | show image classification from ```classifier.py``` | False        |
-| --show-is-a-dog             | show whether images are dogs                       | False        |
-| --show-statistics           | show statistics                                    | False        |
+| --show-args                 | show command line arguments                        | True         |
+| --show-pet-labels           | show pet labels from file names                    | True         |
+| --show-image-classification | show image classification from ```classifier.py``` | True         |
+| --show-is-a-dog             | show whether images are dogs                       | True         |
+| --show-statistics           | show statistics                                    | True         |
 
 ## Results
 The script ```run_models_batch``` provided the correct results and the respective
